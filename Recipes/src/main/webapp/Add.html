@@ -1,0 +1,26 @@
+<html>
+<body>
+
+
+
+sql="INSERT INTO Recipes (id,recipe,"
+sql=sql & "name,type,flavour,noIngred)"
+sql=sql & " VALUES "
+sql=sql & "('" & Request.Form("id") & "',"
+sql=sql & "'" & Request.Form("name") & "',"
+sql=sql & "'" & Request.Form("type") & "',"
+sql=sql & "'" & Request.Form("flavour") & "',"
+sql=sql & "'" & Request.Form("noIngred") & "',"
+
+on error resume next
+conn.Execute sql,recaffected
+if err<>0 then
+  Response.Write("No update permissions!")
+else
+  Response.Write("<h3>" & recaffected & " record added</h3>")
+end if
+conn.close
+%>
+
+</body>
+</html>
